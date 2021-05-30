@@ -1,0 +1,102 @@
+apiVersion: yogeshsurapaneni.com/v1
+kind: mykubeapps
+metadata:
+  name: mykubeapps
+spec:
+  # Default values copied from <project_dir>/helm-charts/mykubeapps/values.yaml
+  general:
+    ingress_host: k8s-test-loadbalancer.local
+    pgid: 1000
+    plex_ingress_host: plex.local
+    puid: 1000
+    storage:
+      nfs: true
+      nfsPath: /export/drive
+      nfsServer: "192.168.1.228"
+      pvcName: mykubeapps-pvc
+      pvcStorageClass: managed-nfs-storage
+      size: 600Gi
+  jackett:
+    container:
+      nodeSelector: {}
+      port: 9117
+    ingress:
+      annotations: {}
+      enabled: true
+      path: /jackett
+      tls:
+        enabled: false
+        secretName: ""
+    service:
+      extraLBService: false
+      nodePort: null
+      port: 9117
+      type: ClusterIP
+  plex:
+    claim: claim-EazK_asskQfY3yN5HJMj
+    advertise_ip: "plex.mykubeapps.local:32400"
+    container:
+      nodeSelector: { }
+      port: 32400
+    ingress:
+      annotations: { }
+      enabled: true
+      tls:
+        enabled: false
+        secretName: ""
+    replicaCount: 1
+    service:
+      extraLBService: false
+      nodePort: 32400
+      port: 32400
+      type: NodePort
+  radarr:
+    container:
+      nodeSelector: {}
+      port: 7878
+    ingress:
+      annotations: {}
+      enabled: true
+      path: /radarr
+      tls:
+        enabled: false
+        secretName: ""
+    service:
+      extraLBService: false
+      nodePort: null
+      port: 7878
+      type: ClusterIP
+  sonarr:
+    container:
+      nodeSelector: {}
+      port: 8989
+    ingress:
+      annotations: {}
+      enabled: true
+      path: /sonarr
+      tls:
+        enabled: false
+        secretName: ""
+    service:
+      extraLBService: false
+      nodePort: null
+      port: 8989
+      type: ClusterIP
+  transmission:
+    container:
+      nodeSelector: {}
+      port: 9091
+    ingress:
+      annotations: {}
+      enabled: true
+      path: /transmission
+      tls:
+        enabled: false
+        secretName: ""
+    service:
+      extraLBService: false
+      nodePort: null
+      port: 9091
+      type: ClusterIP
+  
+  

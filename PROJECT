@@ -1,0 +1,8 @@
+domain: com
+layout: helm.sdk.operatorframework.io/v1
+projectName: myKubeApps-operator
+resources:
+- group: yogeshsurapaneni
+  kind: myKubeApps
+  version: v1
+version: 1

@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: yogeshsurapaneni.com
+  version: v1
+  kind: myKubeApps
+  chart: helm-charts/mykubeapps
+
